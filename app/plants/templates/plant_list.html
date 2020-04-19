@@ -1,0 +1,18 @@
+<h1>Did I water my plants?</h1>
+<ul>
+  {% for plant in all_plants %}
+    <li style=
+      {% if plant.watered_today %}"color:green;"{% else %}"color:red;"{% endif %}>
+      <a href="/plant/{{plant.id}}/">{{ plant.name }}</a>
+      <a href="/water/new/{{plant.id}}">Add Water</a>
+      <a href="/plants/delete/{{plant.id}}/">X</a>
+    </li>
+  {% endfor %}
+</ul>
+
+<h1>Add Plants</h1>
+<form method="post" action="/plants/new/">
+  {% csrf_token %}
+  {{ plant_form }}
+  <button type="submit">Submit</button>
+</form>
