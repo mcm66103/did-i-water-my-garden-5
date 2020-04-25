@@ -36,7 +36,6 @@ SECRET_KEY = env('SECRET_KEY')
 
 
 
-
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
@@ -55,7 +54,13 @@ INSTALLED_APPS = [
 
     'plants',
     'water',
+    'accounts'
 ]
+
+AUTH_USER_MODEL = "accounts.Account"
+
+LOGIN_REDIRECT_URL = '/plants/'
+
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -74,6 +79,7 @@ TEMPLATES = [
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
         'DIRS': [
         '/plants/templates/',
+        '/accounts/templates/',
         ],
         'APP_DIRS': True,
         'OPTIONS': {
